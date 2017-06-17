@@ -8,8 +8,6 @@ var repoSchema = mongoose.Schema({
   userUrl: String,
   repoDescription: String,
   repoUrl: String,
-  createdAt: Date,
-  updatedAt: Date,
   forks: Number,
   watchers: Number,
 });
