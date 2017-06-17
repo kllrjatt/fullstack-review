@@ -27,7 +27,7 @@ app.post('/repos/import', function (req, res) {
   // edit url to add search information and client id for autneticated searches 
   // add user agent to it 
   var term = req.body.term;
-  var clientId = github.github.clientId;
+  var clientID = github.github.clientId;
   var clientSecret = github.github.clientSecret;
   var options = {
     url: `https://api.github.com/users/${term}/repos?client_id=${clientID}&client_secret=${clientSecret}`,
@@ -46,8 +46,8 @@ app.post('/repos/import', function (req, res) {
   rp(options)
     .then((repos) => {
       var jsonRepos = JSON.stringify(repos);
-      var tracker = 0;b6lr60
-      
+      var tracker = 0;
+
       repos.forEach((repo, index, repos) => {
         REPO.create({
           repoName: repo.name,
