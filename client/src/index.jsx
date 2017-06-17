@@ -15,7 +15,44 @@ class App extends React.Component {
 
   search(term) {
     console.log(`${term} was searched`);
-    // TODO
+    // do a ajax call to the server  
+    // type post 
+    // url to repos / import 
+    //content type 
+    // data type 
+    // success 
+    // failure 
+
+    $.ajax({
+      type: 'POST',
+      url: '/repos/import',
+      contentType: 'application/json',
+      data: JSON.stringify({ 'term': term }),
+      success: function (result) {
+        this.fetch();
+      },
+      failure: function () {
+        console.log('Failed')
+      }
+    })
+  }
+
+  // create fetch function 
+  fetch() {
+    // write data as state 
+    var self = this;
+    var setRepo = data => {
+      this.setState({
+        repos: data
+      })
+    }
+    // do a get request 
+    $.get('/repos', function (data) {
+      self.setState({
+        repos: JSON.parse(data)
+      })
+    })
+    // parase pass data as parsed object 
   }
 
   render() {
