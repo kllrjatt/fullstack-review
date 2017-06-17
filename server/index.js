@@ -13,11 +13,22 @@ app.use(bodyParser.json());
 app.use(express.static(__dirname + '/../client/dist'));
 
 app.post('/repos/import', function (req, res) {
-  // TODO
+  // TODOa
 });
 
 app.get('/repos', function (req, res) {
-  // TODO
+  // use find function to get all the data from the repos 
+  // chain methord to limit results to ONLY 25 
+  // sort the data to only shows the results sorted by watcherss
+  // execute the querry 
+  Repo.find({}).limit(25).sort({ watchers: -1 }).exec(function (error, results) {
+    if (error) {
+      console.log('error getting items from the database');
+      res.end();
+    } else {
+      res.end(JSON.stringify(results));
+    }
+  });
 });
 
 var port = 1128;

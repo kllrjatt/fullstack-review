@@ -7,7 +7,7 @@ const RepoList = (props) => (
     There are {props.repos.length} repos.
     <ul>
     {
-      props.repos.maps((repo, i) => {
+      props.repos.map((repo, i) => {
         return <RepoListEntry repo ={repo} />
       })
     }
