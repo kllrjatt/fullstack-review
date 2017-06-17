@@ -10,10 +10,67 @@ var app = express();
 
 app.use(bodyParser.json());
 
+// use promises and request promises 
+// use body parse 
+// use request 
+// import the repo from mongo 
+// import the git hub authentication token 
+
 app.use(express.static(__dirname + '/../client/dist'));
 
 app.post('/repos/import', function (req, res) {
-  // TODOa
+  // get the search information
+  // get the github client id 
+  // get the client authentication token 
+  // create a options object 
+  // add the url to it 
+  // edit url to add search information and client id for autneticated searches 
+  // add user agent to it 
+  var term = req.body.term;
+  var clientId = github.github.clientId;
+  var clientSecret = github.github.clientSecret;
+  var options = {
+    url: `https://api.github.com/users/${term}/repos?client_id=${clientID}&client_secret=${clientSecret}`,
+    headers: {
+      'User-Agent': 'sifarApp'
+    }
+  };
+  // start the request promies chain  using the options 
+  // when there is data, parse the data to make it readable 
+  // itreate through the returned reports 
+  // for each repo , create a new modle entry into the mongo db 
+  // track if all entries are being entered into the database 
+  // once all entries have been added, close the connection by sending res.end 
+  // throw error , if there is a error , cath it and console log the error 
+
+  rp(options)
+    .then((repos) => {
+      var jsonRepos = JSON.stringify(repos);
+
+      var tracker = 0;
+
+      repos.forEach((repo, index, repos) => {
+        REPO.create({
+          repoName: repo.name,
+          repoOwner: repo.owner.login,
+          avatarUrl: repo.owner.avatar_url,
+          userUrl: repo.owner.url,
+          repoDescription: repo.description,
+          repoUrl: repo.html_url,
+          forks: repo.forks,
+          watchers: repo.watchers,
+        }, function (error, doc) {
+          tacker++;
+          if (tacker = repos.length) {
+            res.end();
+          }
+        });
+      });
+    })
+    .catch((erorr) => {
+      console.log(error);
+      res.end();
+    });
 });
 
 app.get('/repos', function (req, res) {
@@ -38,8 +95,3 @@ app.listen(port, function () {
 });
 
 
-// use promises and request promises 
-// use body parse 
-// use request 
-// import the repo from mongo 
-// import the git hub authentication token 
