@@ -32,7 +32,7 @@ app.post('/repos/import', function (req, res) {
   var options = {
     url: `https://api.github.com/users/${term}/repos?client_id=${clientID}&client_secret=${clientSecret}`,
     headers: {
-      'User-Agent': 'sifarApp'
+      'User-Agent': 'GitHubAPI'
     }
   };
   // start the request promies chain  using the options 
@@ -46,9 +46,8 @@ app.post('/repos/import', function (req, res) {
   rp(options)
     .then((repos) => {
       var jsonRepos = JSON.stringify(repos);
-
-      var tracker = 0;
-
+      var tracker = 0;b6lr60
+      
       repos.forEach((repo, index, repos) => {
         REPO.create({
           repoName: repo.name,
