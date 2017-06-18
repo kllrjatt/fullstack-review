@@ -22,6 +22,7 @@ class App extends React.Component {
     // data type 
     // success 
     // failure 
+    var self = this;
 
     $.ajax({
       type: 'POST',
@@ -30,7 +31,7 @@ class App extends React.Component {
       data: JSON.stringify({ 'term': term }),
       success: function (result) {
         console.log('success!');
-        this.fetch();
+        self.fetch();
       },
       failure: function () {
         console.log('Failed')
