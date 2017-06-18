@@ -66,7 +66,7 @@ app.post('/repos/import', function (req, res) {
         });
       });
     })
-    .catch((erorr) => {
+    .catch((error) => {
       console.log(error);
       res.end();
     });

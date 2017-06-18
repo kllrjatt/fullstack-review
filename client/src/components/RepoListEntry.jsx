@@ -14,10 +14,10 @@ const RepoListEntry = (props) => (
 )
 //import react from react 
 // create a const repo list entry 
-  // pass int he props 
+// pass int he props 
 // write html template
-  // pass in information about each repo from the props 
-  // pass in name, url , description and owner to display 
-  // add other information as needed to the list entry 
+// pass in information about each repo from the props 
+// pass in name, url , description and owner to display 
+// add other information as needed to the list entry 
 
 export default RepoListEntry;

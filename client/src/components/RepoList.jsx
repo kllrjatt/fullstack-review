@@ -6,11 +6,11 @@ const RepoList = (props) => (
     <h4> Repo List Component </h4>
     There are {props.repos.length} repos.
     <ul>
-    {
-      props.repos.map((repo, i) => {
-        return <RepoListEntry repo ={repo} />
-      })
-    }
+      {
+        props.repos.map((repo, i) => {
+          return <RepoListEntry repo={repo} />
+        })
+      }
     </ul>
   </div>
 )

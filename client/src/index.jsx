@@ -29,6 +29,7 @@ class App extends React.Component {
       contentType: 'application/json',
       data: JSON.stringify({ 'term': term }),
       success: function (result) {
+        console.log('success!');
         this.fetch();
       },
       failure: function () {
@@ -41,10 +42,10 @@ class App extends React.Component {
   fetch() {
     // write data as state 
     var self = this;
-    var setRepo = data => {
+    var setRepos = data => {
       this.setState({
         repos: data
-      })
+      });
     }
     // do a get request 
     $.get('/repos', function (data) {
