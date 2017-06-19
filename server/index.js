@@ -30,7 +30,7 @@ app.post('/repos/import', function (req, res) {
   var clientID = github.github.clientId;
   var clientSecret = github.github.clientSecret;
   var options = {
-    url: `https://api.github.com/users/${term}/repos?client_id=${clientID}&client_secret=${clientSecret}`,
+    url: `https://api.github.com/users/${term}/repos?access_token=${clientSecret}`,
     headers: {
       'User-Agent': 'GitHubAPI'
     }
